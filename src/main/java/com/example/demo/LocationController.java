@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @RestController
 public class LocationController {
@@ -26,11 +28,32 @@ public class LocationController {
      * @return
      */
     @GetMapping("/cars/{plaque}")
-    public Car getCar(@PathVariable("plaque") String immat){
-        System.out.println(immat);
-        // A faire : rechercher la voiture
-        return null;
+    public Car getCar(@PathVariable("plaque") String immat) throws CarNotFoundException {
+        int i=0;
+        while(i<cars.size() && cars.get(i).getPlaque().equals(immat)==false){
+            i++;
+        }
+        if(i<cars.size()){
+            return cars.get(i);
+        } else {
+            throw new CarNotFoundException();
+        }
     }
+    /**
+     * http://localhost:8080/cars/11AABB
+     * @param immat
+     * @return
+     */
+    /*@GetMapping("/cars/{plaque}")
+    public Car getCar(@PathVariable("plaque") String immat) throws CarNotFoundException {
+        try{
+            Optional<Car> car = cars.stream().filter(c -> c.plaque.equals(immat)).findFirst();
+            System.out.println(car);
+            return car.get();
+        } catch (NoSuchElementException e) {
+            throw new CarNotFoundException();
+        }
+    }*/
 
     /**
      * http://localhost:8080/cars?louer=true
