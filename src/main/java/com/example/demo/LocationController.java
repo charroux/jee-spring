@@ -1,8 +1,6 @@
 package com.example.demo;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,14 +16,38 @@ public class LocationController {
     }
 
     @GetMapping("/cars")
-    public List<Car> disBonjour(){
+    public List<Car> getCars(){
         return cars;
     }
 
+    /**
+     * http://localhost:8080/cars/11AABB
+     * @param immat
+     * @return
+     */
     @GetMapping("/cars/{plaque}")
-    public String getCar(@PathVariable("plaque") String immat){
+    public Car getCar(@PathVariable("plaque") String immat){
         System.out.println(immat);
-        return immat;
+        // A faire : rechercher la voiture
+        return null;
     }
 
+    /**
+     * http://localhost:8080/cars?louer=true
+     */
+    @PutMapping("/cars")
+    public Car louer(@RequestParam("louer") boolean rent){
+        System.out.println(rent);
+        // A faire : louer la voiture
+        return null;
+    }
+
+    /**
+     * Transmettre des données dans la requête
+     */
+    @PostMapping("/cars")
+    public void creerVoiture(@RequestBody Car car){
+        System.out.println(car);
+        // A faire : ajouter une voiture
+    }
 }
