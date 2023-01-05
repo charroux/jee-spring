@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import javax.persistence.*;
+
+@Entity
 public class Car {
 
     String marque;
@@ -7,6 +10,10 @@ public class Car {
     String plaque;
     boolean rent;
     Dates dates;
+    int id;
+
+    public Car(){
+    }
 
     public Car(String marque, int prix, String plaque) {
         this.marque = marque;
@@ -14,6 +21,17 @@ public class Car {
         this.plaque = plaque;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Transient
     public Dates getDates() {
         return dates;
     }
