@@ -7,4 +7,7 @@ import java.util.NoSuchElementException;
 
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
 public class CarNotFoundException extends Exception {
+    public CarNotFoundException(String message){
+        super(message);
+    }
 }

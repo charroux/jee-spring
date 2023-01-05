@@ -36,7 +36,7 @@ public class LocationController {
         if(i<cars.size()){
             return cars.get(i);
         } else {
-            throw new CarNotFoundException();
+            throw new CarNotFoundException("Voiture non trouvée : " + immat);
         }
     }
     /**
@@ -58,11 +58,22 @@ public class LocationController {
     /**
      * http://localhost:8080/cars?louer=true
      */
-    @PutMapping("/cars")
-    public Car louer(@RequestParam("louer") boolean rent){
-        System.out.println(rent);
-        // A faire : louer la voiture
-        return null;
+    @PutMapping("/cars/{plaque}")
+    public Car louer(@RequestParam("louer") boolean rent,
+                     @PathVariable("plaque") String immat,
+                     @RequestBody Dates dates) throws CarNotFoundException {
+
+        int i=0;
+        while(i<cars.size() && cars.get(i).getPlaque().equals(immat)==false){
+            i++;
+        }
+        if(i<cars.size()){
+            cars.get(i).setRent(rent);
+            cars.get(i).setDates(dates);
+            return cars.get(i);
+        } else {
+            throw new CarNotFoundException("Voiture non trouvée : " + immat);
+        }
     }
 
     /**

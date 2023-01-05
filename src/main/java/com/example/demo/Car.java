@@ -5,11 +5,29 @@ public class Car {
     String marque;
     int prix;
     String plaque;
+    boolean rent;
+    Dates dates;
 
     public Car(String marque, int prix, String plaque) {
         this.marque = marque;
         this.prix = prix;
         this.plaque = plaque;
+    }
+
+    public Dates getDates() {
+        return dates;
+    }
+
+    public void setDates(Dates dates) {
+        this.dates = dates;
+    }
+
+    public boolean isRent() {
+        return rent;
+    }
+
+    public void setRent(boolean rent) {
+        this.rent = rent;
     }
 
     public String getMarque() {
