@@ -71,4 +71,16 @@ public class Car {
     public void setPlaque(String plaque) {
         this.plaque = plaque;
     }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "marque='" + marque + '\'' +
+                ", prix=" + prix +
+                ", plaque='" + plaque + '\'' +
+                ", rent=" + rent +
+                ", dates=" + dates +
+                ", id=" + id +
+                '}';
+    }
 }

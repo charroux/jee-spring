@@ -25,6 +25,9 @@ public class DemoApplication {
 				Car c = cars.next();
 				System.out.println(c.getMarque() + " " + c.getPrix() + " " + c.getPlaque());
 			}
+
+			car = carRepository.findByMarque("Ferrari");
+			System.out.println(car);
 		};
 	}
 
