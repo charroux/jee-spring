@@ -45,15 +45,17 @@ public class LocationControllerJPA {
         }
         car.setRent(rent);
         car.setDates(dates);
+        carRepository.save(car);
         return car;
     }
 
     /**
      * Transmettre des données dans la requête
      */
-    @PostMapping("jpa//cars")
+    @PostMapping("/jpa/cars")
     public void creerVoiture(@RequestBody Car car){
         System.out.println(car);
+        carRepository.save(car);
         // A faire : ajouter une voiture
     }
 
