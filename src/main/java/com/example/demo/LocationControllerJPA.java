@@ -45,6 +45,7 @@ public class LocationControllerJPA {
         }
         car.setRent(rent);
         car.setDates(dates);
+        dates.setCar(car);
         carRepository.save(car);
         return car;
     }

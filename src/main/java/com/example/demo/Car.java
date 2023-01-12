@@ -31,7 +31,7 @@ public class Car {
         this.id = id;
     }
 
-    @OneToOne(mappedBy = "car")
+    @OneToOne(mappedBy = "car", cascade = CascadeType.ALL)
     public Dates getDates() {
         return dates;
     }

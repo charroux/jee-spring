@@ -10,6 +10,20 @@ public class Dates {
     private Car car;
     private int id;
 
+    public Dates(String debut, String fin, Car car) {
+        this.debut = debut;
+        this.fin = fin;
+        this.car = car;
+    }
+
+    public Dates(String debut, String fin) {
+        this.debut = debut;
+        this.fin = fin;
+    }
+
+    public Dates() {
+    }
+
     public String getDebut() {
         return debut;
     }

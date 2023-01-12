@@ -18,6 +18,9 @@ public class DemoApplication {
 	public CommandLineRunner demo(CarRepository carRepository) {
 		return (args) -> {
 			Car car = new Car("Ferrari", 1000, "AA11BB");
+			Dates dates = new Dates("12/2/2023", "2/5/2023");
+			car.setDates(dates);
+			dates.setCar(car);
 			carRepository.save(car);
 
 			Iterator<Car> cars = carRepository.findAll().iterator();
