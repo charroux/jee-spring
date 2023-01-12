@@ -31,7 +31,7 @@ public class Car {
         this.id = id;
     }
 
-    @Transient
+    @OneToOne(mappedBy = "car")
     public Dates getDates() {
         return dates;
     }
