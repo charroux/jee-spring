@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -41,6 +43,7 @@ public class Dates {
     }
 
     @OneToOne
+    @JsonIgnore
     public Car getCar() {
         return car;
     }
